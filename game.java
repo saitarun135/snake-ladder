@@ -15,12 +15,23 @@ public class game{
 				case 1 : {
 					pos_temp=pos;
 					pos+=die;
-					System.out.println("\n Player  Rolled[DIE] | Die Value : "+die +"\n Player  Climbed Laddar with +"+die+"\n");
+					if(pos>100){
+					pos=pos_temp;
+					System.out.println("\nPlayer need to get Die value "+(100-pos)+" to win\n");
+						break;
+					}
+					System.out.println("\n Player  Rolled[DIE] | Die Value : "+die +"\n Player  Climbed Laddar with +"+die+"\n current position of a player:"+pos+"\n");
 					break;
 				}
 				case 2:{
 					pos-=die;
-					System.out.println("\n Player  Rolled[DIE] ! Die Value : "+die +"\n Player  bitten by snake with -"+die+"\n");
+					if(pos<=0){
+						flag=0;
+						pos=0;
+						System.out.println("\n NO!! player is eliminated out of the game He needs one in order to enter the game\n");
+						break;	
+						}
+					System.out.println("\n Player  Rolled[DIE] ! Die Value : "+die +"\n Player  bitten by snake with -"+die+"\n current position of a player:"+pos+"\n");
 					break;
 			}
 		}	
@@ -32,7 +43,7 @@ public class game{
 				System.out.println("\nPlayer  is entered into Game! \n  Player  position : "+pos+"\n");
 				}
 	if(pos>=100) {
-			System.out.println("\n !!Game Over!!\n\n Player  wins with "+dieRoll+ " Die Rolls\n");
+			System.out.println("\n !!Game Over!!\n results are displayed below.....\n\n Player  wins with "+dieRoll+ " Die Rolls\n");
 			return;
 			}
 
